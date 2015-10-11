@@ -15,7 +15,7 @@ Install Node.jsThe best way to install Node.js is with Node Version Manager, nv"
 <meta property="og:description" content="What is Hexo?Hexo is a fast, simple and powerful blog framework.
 InstallationInstall Git1$ sudo apt-get install git-core
 Install Node.jsThe best way to install Node.js is with Node Version Manager, nv">
-<meta property="og:updated_time" content="2015-10-11T08:22:13.242Z">
+<meta property="og:updated_time" content="2015-10-11T08:32:48.805Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Use Hexo to Create a Personal Blog on Github">
 <meta name="twitter:description" content="What is Hexo?Hexo is a fast, simple and powerful blog framework.
@@ -252,19 +252,17 @@ Install Node.jsThe best way to install Node.js is with Node Version Manager, nv"
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Manual install</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/creationix/nvm.git ~/.nvm &amp;&amp; <span class="built_in">cd</span> ~/.nvm &amp;&amp; git checkout `git describe --abbrev=<span class="number">0</span> --tags`</span><br><span class="line"><span class="comment"># To activate nvm, you need to source it from your shell. Add it your `~/.bashrc`, `~/.profile` file to have it automatically sourced upon login.</span></span><br><span class="line">$ . ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/creationix/nvm.git ~/.nvm &amp;&amp; <span class="built_in">cd</span> ~/.nvm &amp;&amp; git checkout `git describe --abbrev=<span class="number">0</span> --tags`</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>  To activate nvm, you need to source it from your shell:</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ . ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
-<p>  Add the above line to your <code>~/.bashrc</code>, <code>~/.profile</code> file to have it automatically sourced upon login. <em>Often I also put in a line to use a specific version of node.</em></p>
+<p>   <strong>Often I also put in a line to use a specific version of node.</strong> Add <code>nvm use 0.12</code> to your <code>~/.bashrc</code>, <code>~/.profile</code> file.</p>
 <ul>
 <li>Install Node.js</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install <span class="number">0.12</span></span><br></pre></td></tr></table></figure>
-<p><em>must issue the command below to tell nvm to use the specific version of Node.js just installed.</em></p>
+<p><strong>Must issue the command below to tell nvm to use the specific version of Node.js just installed.</strong></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use <span class="number">0.12</span></span><br></pre></td></tr></table></figure>
 <h3 id="Install_Hexo">Install Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <h3 id="Create_a_repo_on_github_named_jasonkoo-github-io">Create a repo on github named jasonkoo.github.io</h3><p>On local machine<br>mkdir jasonkoo.github.io<br>cd jasonkoo.github.io<br>echo “# jasonkoo.github.io” &gt;&gt; README.md<br>git init<br>git add README.md<br>git commit -m “first commit”<br>git remote add origin git@github.com:jasonkoo/jasonkoo.github.io.git<br>git push -u origin master</p>
