@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/nvm/" style="font-size: 10px;">nvm</a>
 					</div>
 				</section>
 				
@@ -196,56 +196,6 @@
 </nav>
       <div class="body-wrap">
   
-    <article id="post-hexo-blogging" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/10/11/hexo-blogging/" class="article-date">
-  	<time datetime="2015-10-11T07:59:07.000Z" itemprop="datePublished">2015-10-11</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/10/11/hexo-blogging/">hexo blogging</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -289,6 +239,94 @@
       
       
       
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+  
+    <article id="post-hexo-blogging" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/11/hexo-blogging/" class="article-date">
+  	<time datetime="2015-10-11T07:08:38.000Z" itemprop="datePublished">2015-10-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/11/hexo-blogging/">Use Hexo to Create a Personal Blog on Github</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="What_is_Hexo?">What is Hexo?</h2><p>Hexo is a fast, simple and powerful blog framework.</p>
+<h2 id="Installation">Installation</h2><h3 id="Install_Git">Install Git</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
+<h3 id="Install_Node-js">Install Node.js</h3><p>The best way to install Node.js is with Node Version Manager, nvm for short.</p>
+<ul>
+<li><p>Install nvm</p>
+<ul>
+<li>Install script</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Manual install</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/creationix/nvm.git ~/.nvm &amp;&amp; <span class="built_in">cd</span> ~/.nvm &amp;&amp; git checkout `git describe --abbrev=<span class="number">0</span> --tags`</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>  To activate nvm, you need to source it from your shell:</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ . ~/.nvm/nvm.sh</span><br></pre></td></tr></table></figure>
+<p>  Add the above line to your <code>~/.bashrc</code>, <code>~/.profile</code> file to have it automatically sourced upon login. <em>Often I also put in a line to use a specific version of node.</em></p>
+<ul>
+<li>Install Node.js</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm install <span class="number">0.12</span></span><br></pre></td></tr></table></figure>
+<p><em>must issue the command below to tell nvm to use the specific version of Node.js just installed.</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nvm use <span class="number">0.12</span></span><br></pre></td></tr></table></figure>
+<h3 id="Install_Hexo">Install Hexo</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h3 id="Create_a_repo_on_github_named_jasonkoo-github-io">Create a repo on github named jasonkoo.github.io</h3><p>On local machine<br>mkdir jasonkoo.github.io<br>cd jasonkoo.github.io<br>echo “# jasonkoo.github.io” &gt;&gt; README.md<br>git init<br>git add README.md<br>git commit -m “first commit”<br>git remote add origin git@github.com:jasonkoo/jasonkoo.github.io.git<br>git push -u origin master</p>
+<p>hexo init .<br>hexo install</p>
+<p>install theme<br>git clone <a href="https://github.com/litten/hexo-theme-yilia.git" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia.git</a> themes/yilia</p>
+<p>config theme<br>vi theme: yilia<br>theme: yilia</p>
+<h2 id="Reference">Reference</h2><p>[Hexo Official Website] (<a href="https://hexo.io/" target="_blank" rel="external">https://hexo.io/</a>)<br>[How to Install Hexo] (<a href="https://hexo.io/docs/index.html" target="_blank" rel="external">https://hexo.io/docs/index.html</a>)<br>[Node Version Manager] (<a href="https://github.com/creationix/nvm" target="_blank" rel="external">https://github.com/creationix/nvm</a>)<br>[Hexo Theme Yilia] (<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">https://github.com/litten/hexo-theme-yilia</a>)</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nvm/">nvm</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Tools/">Tools</a><a class="article-category-link" href="/categories/Tools/Blog/">Blog</a>
+	</div>
+
 
       
       <div class="clearfix"></div>
