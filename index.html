@@ -114,7 +114,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/Github/" style="font-size: 10px;">Github</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/nvm/" style="font-size: 10px;">nvm</a> <a href="/tags/songs/" style="font-size: 10px;">songs</a>
+						<a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Node-js/" style="font-size: 10px;">Node.js</a> <a href="/tags/Proxy/" style="font-size: 10px;">Proxy</a> <a href="/tags/Shadowsocks/" style="font-size: 10px;">Shadowsocks</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/music/" style="font-size: 10px;">music</a> <a href="/tags/nvm/" style="font-size: 10px;">nvm</a> <a href="/tags/songs/" style="font-size: 10px;">songs</a>
 					</div>
 				</section>
 				
@@ -195,6 +195,73 @@
 	</div>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-setup-shadowsocks-on-ubuntu" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2015/10/13/setup-shadowsocks-on-ubuntu/" class="article-date">
+  	<time datetime="2015-10-13T13:50:08.000Z" itemprop="datePublished">2015-10-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/10/13/setup-shadowsocks-on-ubuntu/">setup shadowsocks on ubuntu</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="What_is_Shadowsocks?">What is Shadowsocks?</h2><p>Shadowsocks is a fast tunnel proxy that helps you bypass firewalls.</p>
+<h2 id="Installation">Installation</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt-get install python-pip</span><br><span class="line">$ sudo pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<h2 id="Configuration">Configuration</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vi /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    "<span class="attribute">server</span>":<span class="value"><span class="string">"45.33.34.238"</span></span>,</span><br><span class="line">    "<span class="attribute">server_port</span>":<span class="value"><span class="number">27886</span></span>,</span><br><span class="line">    "<span class="attribute">local_address</span>": <span class="value"><span class="string">"127.0.0.1"</span></span>,</span><br><span class="line">    "<span class="attribute">local_port</span>":<span class="value"><span class="number">1080</span></span>,</span><br><span class="line">    "<span class="attribute">password</span>":<span class="value"><span class="string">"xxxxxxxxxxx"</span></span>,</span><br><span class="line">    "<span class="attribute">timeout</span>":<span class="value"><span class="number">300</span></span>,</span><br><span class="line">    "<span class="attribute">method</span>":<span class="value"><span class="string">"aes-256-cfb"</span></span>,</span><br><span class="line">    "<span class="attribute">fast_open</span>":<span class="value"><span class="literal">false</span></span><br><span class="line"></span>&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Starting_and_Stopping_Client">Starting and Stopping Client</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># start client in background to connect to the proxy server</span></span><br><span class="line">$ sslocal -c /etc/shadowsocks.json <span class="operator">-d</span> start</span><br><span class="line"><span class="comment"># stop client</span></span><br><span class="line">$ sslocal -c /etc/shadowsocks.json <span class="operator">-d</span> stop</span><br></pre></td></tr></table></figure>
+<h2 id="Starting_Client_Upon_Startup_of_Ubuntu">Starting Client Upon Startup of Ubuntu</h2><p>Add <code>sslocal -c /etc/shadowsocks.json -d start</code> to /etc/rc.local</p>
+<h2 id="Chrome_Setting">Chrome Setting</h2><p>设置 -&gt; 显示高级设置 -&gt; 更改代理服务器设置 -&gt; 网络代理 -&gt; Socks主机：127.0.0.1：1080</p>
+<h2 id="Firefox_Setting">Firefox Setting</h2><p>左上方 -&gt; 工具 -&gt; 添加附件 -&gt; 搜索AutoProxy，并下载安装 -&gt; 重启Firefox -&gt; AutoProxy首选项 -&gt; 代理服务器 -&gt; 编辑代理服务器 -&gt; 添加代理：Shadowsocks, 127.0.0.1:1080, socks5 -&gt; 确定 -&gt; 全局模式使用Shadowsocks</p>
+<h2 id="References">References</h2><p><a href="https://github.com/shadowsocks/shadowsocks/wiki" target="_blank" rel="external">Shadowsocks Wiki</a><br><a href="https://github.com/shadowsocks/shadowsocks/wiki/Shadowsocks-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank" rel="external">Shadowsocks Tutorial</a><br><a href="https://github.com/shadowsocks/shadowsocks/wiki/Configuration-via-Config-File" target="_blank" rel="external">Configuration via Config File</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Proxy/">Proxy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Shadowsocks/">Shadowsocks</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<a class="article-category-link" href="/categories/Tools/">Tools</a><a class="article-category-link" href="/categories/Tools/Proxy/">Proxy</a>
+	</div>
+
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
   
     <article id="post-my-song-list" class="article article-type-post" itemscope itemprop="blogPost">
   
@@ -447,7 +514,7 @@
       
       
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nvm/">nvm</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node-js/">Node.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nvm/">nvm</a></li></ul>
 	</div>
 
       
